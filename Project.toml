@@ -1,0 +1,14 @@
+name = "MarketObservables"
+uuid = "cfae606c-6127-11e9-3fd8-a1a55302b233"
+authors = ["Simon Castano <simon@brane.cc>"]
+version = "0.0.1"
+
+[deps]
+Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
+Observables = "510215fc-4207-5dde-b226-833fc4488ee2"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
