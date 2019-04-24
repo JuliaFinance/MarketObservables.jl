@@ -1,6 +1,6 @@
 using Test
 using MarketObservables
-using MarketObservables: FiniteDepthOrderBook, InfiniteDepthOrderBook
+using MarketObservables: OrderBook, FiniteDepthOrderBook, InfiniteDepthOrderBook
 using MarketObservables: Level, price 
 
 
