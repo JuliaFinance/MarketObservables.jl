@@ -38,4 +38,6 @@ end
 include("level.jl")
 include("depth_finite.jl")
 include("depth_infinite.jl")
-include("provider/lobster.jl")
+
+# uncomment to add support for orderbooks provider
+# include("provider/lobster.jl")  # https://lobsterdata.com/

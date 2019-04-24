@@ -5,7 +5,7 @@ struct InfiniteDepthOrderBook{Tprice, Tvolume} <: AbstractOrderBook{Tprice, Tvol
     
     function InfiniteDepthOrderBook(lowest_ask::Tprice, highest_bid::Tprice; volume::Tvolume=null_volume, unchecked=false) where {Tprice, Tvolume}
         unchecked && return new{Tprice, Tvolume}(lowest_ask, highest_bid, volume)
-        highest_bid > lowest_ask ? throw(OrderBookException("lowest_ask ($lowest_ask) must be greater than or equal to highest_bid ($highest_bid)")):
+        highest_bid > lowest_ask && throw(OrderBookException("lowest_ask ($lowest_ask) must be greater than or equal to highest_bid ($highest_bid)"))
         new{Tprice, Tvolume}(lowest_ask, highest_bid, volume)
     end
 
