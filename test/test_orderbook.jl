@@ -3,7 +3,7 @@ using MarketObservables
 using MarketObservables: OrderBook, OrderBookException
 using MarketObservables: FiniteDepthOrderBook, InfiniteDepthOrderBook
 using MarketObservables: Level, price, bid, ask, spread
-using MarketObservables: Volume
+using MarketObservables: Volume, null_volume
 
 
 @testset "Test Level" begin
