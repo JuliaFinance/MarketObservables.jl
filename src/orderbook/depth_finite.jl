@@ -29,14 +29,14 @@ function OrderBook(asks::Vector, bids::Vector)
 end
 
 
-function _price(v_level::Vector{Level{Tprice, Tvolume}}, volume::Volume; raise=false) where {Tprice, Tvolume}
-    @assert volume >= Volume(0) "volume must be positive or zero"
+function _price(v_level::Vector{Level{Tprice, Tvolume}}, volume::Tvolume; raise=false) where {Tprice, Tvolume}
+    @assert volume >= zero(Tvolume) "volume must be positive or zero"
     remaining_volume = volume
-    price_volume_sum = Price(0) * Volume(0)
+    price_volume_sum = zero(Tprice) * zero(Tvolume)
     for level in v_level
         if level.volume >= remaining_volume
             taken_volume = remaining_volume
-            remaining_volume = Volume(0)
+            remaining_volume = zero(Tvolume)
             price_volume_sum += (level.price * taken_volume)
             break
         else
@@ -47,7 +47,7 @@ function _price(v_level::Vector{Level{Tprice, Tvolume}}, volume::Volume; raise=f
     end
     total_volume = volume - remaining_volume
     price = price_volume_sum / total_volume
-    if raise && remaining_volume != Volume(0)
+    if raise && remaining_volume != zero(Tvolume)
         throw(OrderBookException("Orderbook doesn't have enough depth"))
     end
     price, remaining_volume
