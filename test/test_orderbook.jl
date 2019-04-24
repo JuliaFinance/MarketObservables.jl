@@ -1,7 +1,9 @@
 using Test
 using MarketObservables
-using MarketObservables: OrderBook, FiniteDepthOrderBook, InfiniteDepthOrderBook
-using MarketObservables: Level, price 
+using MarketObservables: OrderBook, OrderBookException
+using MarketObservables: FiniteDepthOrderBook, InfiniteDepthOrderBook
+using MarketObservables: Level, price, bid, ask, spread
+using MarketObservables: Volume
 
 
 @testset "Test Level" begin
