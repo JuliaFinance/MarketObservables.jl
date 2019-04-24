@@ -1,6 +1,6 @@
 module MarketObservables
 
-using Observables, Dates
+using Dates
 
 include("Ticker.jl")
 include("OrderBook.jl")
