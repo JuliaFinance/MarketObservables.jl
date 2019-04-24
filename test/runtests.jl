@@ -1,7 +1,7 @@
-using Test, MarketObservables
+using Test, Glob, MarketObservables
 
-tests = ["dummy"]
+tests = glob("test_")
 
-for t ∈ tests
-  include("$(t).jl")
+for test_file ∈ tests
+  include(test_file)
 end
