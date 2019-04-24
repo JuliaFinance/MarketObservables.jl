@@ -1,7 +1,7 @@
 using Test
 using MarketObservables
 using MarketObservables: FiniteDepthOrderBook, InfiniteDepthOrderBook
-using MarketObservables: price 
+using MarketObservables: Level, price 
 
 
 @testset "Test Level" begin
