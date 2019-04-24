@@ -8,10 +8,10 @@ struct FiniteDepthOrderBook{Tprice, Tvolume} <: AbstractOrderBook{Tprice, Tvolum
     #bids = SortedDict(Dict{Price,Volume}(), Base.Reverse)
     
     function FiniteDepthOrderBook(asks::Vector{Level{Tprice, Tvolume}}, bids::Vector{Level{Tprice, Tvolume}}) where {Tprice, Tvolume}
-        !issorted(bids, rev=true) ? throw(OrderBookException("bids must have price descending")) :
-        !issorted(asks) ? throw(OrderBookException("asks must have price ascending")) :
-        !isunique(bids) ? throw(OrderBookException("bids must have unique prices")) :
-        !isunique(asks) ? throw(OrderBookException("asks must have unique prices")) :
+        !issorted(bids, rev=true) && throw(OrderBookException("bids must have price descending"))
+        !issorted(asks) && throw(OrderBookException("asks must have price ascending"))
+        !isunique(bids) && throw(OrderBookException("bids must have unique prices"))
+        !isunique(asks) && throw(OrderBookException("asks must have unique prices"))
         new{Tprice, Tvolume}(asks, bids)
     end
 
