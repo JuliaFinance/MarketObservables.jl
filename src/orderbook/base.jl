@@ -4,12 +4,12 @@ struct OrderBookException <: Exception
     msg::String
 end
 
-function price(ob::AbstractOrderBook, volume::Volume; raise=false)
-    if volume == Volume(0)
+function price(ob::AbstractOrderBook, volume::Tvolume; raise=false) where {Tvolume}
+    if volume == zero(Tvolume)
         midpoint = (bid(ob)[1] + ask(ob)[1]) / 2
         midpoint, volume
     else
-        if volume > Volume(0)
+        if volume > zero(Tvolume)
             ask(ob, volume; raise=raise)
         else
             bid(ob, -volume; raise=raise)        
@@ -29,7 +29,7 @@ function spread(ob::AbstractOrderBook)
     spread(ob, Volume(0))
 end
 
-function spread(ob::AbstractOrderBook, volume::Volume; raise=false)
+function spread(ob::AbstractOrderBook, volume::Tvolume; raise=false) where {Tvolume}
     p_ask, remaining_volume_ask = ask(ob, volume; raise=raise)
     p_bid, remaining_volume_bid = bid(ob, volume; raise=raise)
     p_ask - p_bid, remaining_volume_ask, remaining_volume_bid
