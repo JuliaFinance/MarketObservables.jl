@@ -17,16 +17,16 @@ function price(ob::AbstractOrderBook, volume::Tvolume; raise=false) where {Tvolu
     end
 end
 
-function bid(ob::AbstractOrderBook)
-    bid(ob, Volume(0))
+function bid(ob::AbstractOrderBook{Tprice, Tvolume}) where {Tprice, Tvolume}
+    bid(ob, zero(Tvolume))
 end
 
-function ask(ob::AbstractOrderBook)
-    ask(ob, Volume(0))
+function ask(ob::AbstractOrderBook{Tprice, Tvolume}) where {Tprice, Tvolume}
+    ask(ob, zero(Tvolume))
 end
 
-function spread(ob::AbstractOrderBook)
-    spread(ob, Volume(0))
+function spread(ob::AbstractOrderBook{Tprice, Tvolume}) where {Tprice, Tvolume}
+    spread(ob, zero(Tvolume))
 end
 
 function spread(ob::AbstractOrderBook, volume::Tvolume; raise=false) where {Tvolume}
