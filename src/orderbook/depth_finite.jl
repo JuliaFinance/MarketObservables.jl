@@ -53,16 +53,16 @@ function _price(v_level::Vector{Level{Tprice, Tvolume}}, volume::Tvolume; raise=
     price, remaining_volume
 end
 
-function bid(ob::FiniteDepthOrderBook, volume::Volume; raise=false)
-    if volume == Volume(0)
+function bid(ob::FiniteDepthOrderBook, volume::Tvolume; raise=false) where {Tvolume}
+    if volume == zero(Tvolume)
         ob.bids[1].price, volume
     else
         _price(ob.bids, volume; raise=raise)
     end
 end
 
-function ask(ob::FiniteDepthOrderBook, volume::Volume; raise=false)
-    if volume == Volume(0)
+function ask(ob::FiniteDepthOrderBook, volume::Tvolume; raise=false) where {Tvolume}
+    if volume == zero(Tvolume)
         ob.asks[1].price, volume
     else
         _price(ob.asks, volume; raise=raise)

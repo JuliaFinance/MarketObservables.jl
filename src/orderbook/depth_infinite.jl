@@ -19,10 +19,10 @@ function OrderBook(price; volume=null_volume)
     InfiniteDepthOrderBook(price, price; volume=volume)
 end
 
-function bid(ob::InfiniteDepthOrderBook, volume::Volume; raise=false)
-    ob.highest_bid, Volume(0)
+function bid(ob::InfiniteDepthOrderBook, volume::Tvolume; raise=false) where {Tvolume}
+    ob.highest_bid, zero(Tvolume)
 end
 
-function ask(ob::InfiniteDepthOrderBook, volume::Volume; raise=false)
-    ob.lowest_ask, Volume(0)
+function ask(ob::InfiniteDepthOrderBook, volume::Tvolume; raise=false) where {Tvolume}
+    ob.lowest_ask, zero(Tvolume)
 end
