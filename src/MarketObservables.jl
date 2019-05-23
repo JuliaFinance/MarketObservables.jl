@@ -2,6 +2,8 @@ module MarketObservables
 
 using Dates
 
+export Ticker
+
 abstract type MarketObservable end
 
 include("types.jl")

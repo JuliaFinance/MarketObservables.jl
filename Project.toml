@@ -7,8 +7,9 @@ version = "0.0.1"
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
 
 [extras]
+Currencies = "0fd90b74-7c1f-579e-9252-02cd883047b9"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 Glob = "c27321d9-0574-5035-807b-f59d2c89b15c"
 
 [targets]
-test = ["Test", "Glob"]
+test = ["Test", "Glob", "Currencies"]
