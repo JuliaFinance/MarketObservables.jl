@@ -1,7 +1,10 @@
-using Base.Test
-using EOTrader
-using EOTrader: FiniteDepthOrderBook, InfiniteDepthOrderBook
-using EOTrader: isnullvolume, price
+using Test
+using MarketObservables
+using MarketObservables: OrderBook, OrderBookException
+using MarketObservables: FiniteDepthOrderBook, InfiniteDepthOrderBook
+using MarketObservables: Level, price, bid, ask, spread
+using MarketObservables: Volume, null_volume
+
 
 @testset "Test Level" begin
     l1 = Level(1.34, 100.2)
