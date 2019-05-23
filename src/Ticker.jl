@@ -8,11 +8,11 @@ struct Ticker{Tcounter,Tbase,Tlast,Tvolume} <: MarketObservable
     volume::Tvolume
     bid::Tlast
     ask::Tlast
-    high::Tlast
     low::Tlast
+    high::Tlast
 
-    Ticker(counter, base, last, timestamp, volume, bid, ask, high, low) =
-    new{typeof(counter), typeof(base), typeof(last), typeof(volume)}(counter, base, last, timestamp, volume, bid, ask, high, low)
+    Ticker(counter, base, last, timestamp, volume, bid, ask, low, high) =
+    new{typeof(counter), typeof(base), typeof(last), typeof(volume)}(counter, base, last, timestamp, volume, bid, ask, low, high)
 end
 
 function show(io::IO, z::Ticker)
@@ -20,6 +20,6 @@ function show(io::IO, z::Ticker)
           Currencies.name(z.base), " | ", z.timestamp,
           "\n--------------------------------",
           "\nLast : ", z.last, " - Volume : ", z.volume,
-          "\nHigh : ", z.high," - Low : ", z.low,
-          "\nBid : ", z.bid," - Ask : ", z.ask)
+          "\nBid : ", z.bid," - Ask : ", z.ask,
+          "\nLow : ", z.high," - High : ", z.low)
 end
