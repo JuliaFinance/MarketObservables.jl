@@ -20,7 +20,7 @@ end
 function show(io::IO, z::Ticker)
     print(io, Currencies.name(z.counter), " - ",
           Currencies.name(z.base), " | ", z.timestamp,
-          "\n--------------------------------"
+          "\n--------------------------------",
           "\nLast : ", z.last, " - Volume : ", z.volume,
           "\nHigh : ", z.high," - Low : ", z.low,
           "\nBid : ", z.bid," - Ask : ", z.ask)
