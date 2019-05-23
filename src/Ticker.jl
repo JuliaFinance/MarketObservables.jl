@@ -1,23 +1,21 @@
-using Currencies, Decimals
-
 import Base: show
 
-struct Ticker <: MarketObservable
-    counter::Currency
-    base::Currency
-    last::Decimal
+struct Ticker{C,B,L,V} <: MarketObservable
+    counter::C
+    base::B
+    last::L
     timestamp::DateTime
-    volume::Decimal
-    bid::Decimal
-    ask::Decimal
-    high::Decimal
-    low::Decimal
+    volume::V
+    bid::L
+    ask::L
+    high::L
+    low::L
 
     Ticker(counter, base, last, timestamp, volume, bid, ask, high, low) =
-    new(counter, base, last, timestamp, volume, bid, ask, high, low)
+    new{(typeof(counter), typeof(base), typeof(last), typeof(volume)}(counter, base, last, timestamp, volume, bid, ask, high, low)
 end
-
-function show(io::IO, z::Ticker)
+`
+`function show(io::IO, z::Ticker)
     print(io, Currencies.name(z.counter), " - ",
           Currencies.name(z.base), " | ", z.timestamp,
           "\n--------------------------------",
